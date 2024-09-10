@@ -18,9 +18,13 @@ def media_files(filename):
     return send_from_directory(app.config['MEDIA_FOLDER'], filename)
 
 
-@app.route('/')
+@app.route('/',methods=['GET','POST'])
 def home():
     obj = DressModel.query.all()
+    if request.method == "POST":
+        search = request.form['search_text']
+        if search:
+            obj = DressModel.query.filter(DressModel.name.ilike(f'%{search}%')).all()
     return render_template('home.html', my_dress=obj)
 
 

@@ -39,6 +39,39 @@
             text-decoration: none;
             font-size: 16px;
         }
+        #search-form {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-grow: 1;
+        }
+        #search_text {
+            padding: 10px;
+            margin-right: 10px;
+            font-size: 17px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            width: 300px;
+            transition: border-color 0.3s ease;
+        }
+        #search_text:focus {
+            border-color: rgb(233, 189, 196);
+            outline: none;
+        }
+        #btn {
+            background-color: rgb(2, 131, 41);
+            color: #fff;
+            text-decoration:none;
+            font-size: 17px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        #btn:hover {
+            background-color: rgb(61, 147, 87);
+        }
     </style>
 </head>
 <body>
@@ -50,6 +83,10 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            <form method="POST" id="search-form">
+                <input type="text" id="search_text" name="search_text" placeholder="Search for Outfits...">
+                <button type="submit" id="btn"><ion-icon name="search-outline"></ion-icon></button>
+            </form>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
@@ -74,7 +111,7 @@
         <div class="container">
             <h1>Welcome to Our Website</h1>
             <p class="lead">Responsive design with Bootstrap</p>
-            <a href="#" class="btn btn-primary btn-lg">Learn More</a>
+            <a href="#" id="btn">Learn More</a>
         </div>
     </header>
 
