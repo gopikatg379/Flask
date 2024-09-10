@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <style>
+        body {
+            background-color: rgb(232, 230, 230);
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            max-width: 800px;
+            margin-top: 50px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 20px;
+        }
+
+        .flower-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .flower-image img {
+            max-width: 100px;
+            border-radius: 10px;
+        }
+
+        .flower-details {
+            flex: 3;
+            padding-left: 20px;
+        }
+
+        .flower-details h2 {
+            margin: 0;
+            color: #333;
+        }
+
+        .flower-details p {
+            margin: 5px 0;
+            font-size: 16px;
+            color: #777;
+        }
+
+        .flower-details .price {
+            font-weight: bold;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        {% for item in data %}
+        <div class="cart-item">
+            <div class="flower-image">
+                <img src="{{url_for('media_files', filename=item.dress.image)}}">
+            </div>
+            <div class="flower-details">
+                <h2>{{ item.dress.name }}</h2>
+                <p class="price">Price: ₹{{ item.dress.price }}</p>
+                <a href="/delete/{{item.cart_id}}">Remove</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
