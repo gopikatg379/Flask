@@ -73,56 +73,57 @@
             transition: background-color 0.3s ease;
         }
         #btn:hover {
-            background-color: #f1c6a5;
+            background-color: #aa8b77;
         }
         .content-header{
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('{{ url_for('static', filename='background.jpg') }}') no-repeat center center;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('{{ url_for('static', filename='clothes.jpg') }}') no-repeat center center;
             background-size: cover;
             text-align: center;
             color: white;
             padding: 100px 0;
         }
         .card {
-        transition: box-shadow 0.3s ease;
-    }
+            transition: box-shadow 0.3s ease;
+        }
 
-    .card:hover {
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    }
+        .card:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
 
     /* Color circles for color options */
-    .color-circle {
-        width: 15px;
-        height: 15px;
-        display: inline-block;
-        border-radius: 50%;
-        margin-right: 5px;
-        border: 1px solid #ccc;
-    }
+        .color-circle {
+            width: 15px;
+            height: 15px;
+            display: inline-block;
+            border-radius: 50%;
+            margin-right: 5px;
+            border: 1px solid #ccc;
+        }
 
     /* Size options */
-    .size-option {
-        padding: 2px 6px;
-        border: 1px solid #ccc;
-        border-radius: 3px;
+        .size-option {
+            padding: 2px 6px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
 
-        background-color: #f5f5f5;
-    }
+            background-color: #f5f5f5;
+        }
 
-    .size-option:hover {
-        background-color: #ddd;
-    }
+        .size-option:hover {
+            background-color: #ddd;
+        }
 
     /* Button style */
-    #contentbtn {
-        background-color: #eed0b9;
-        color: black;
-        padding: 10px;
-        border-radius: 5px;
-        text-align: center;
-        text-decoration:none;
+        #contentbtn {
+            background-color: #eed0b9;
+            color: black;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            text-decoration:none;
 
-    }
+        }
+        /* About css */
         .about-header {
             background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('{{ url_for('static', filename='modern.jpg') }}') no-repeat center center;
             background-size: cover;
@@ -168,6 +169,99 @@
             width:500px;
 
         }
+        /* Contact css */
+        .contact-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('{{ url_for('static', filename='background.jpg') }}') no-repeat center center;
+            background-size: cover;
+            padding: 100px 0;
+            text-align: center;
+            color: white;
+        }
+        .contact-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        .contact-header p {
+            font-size: 1.2rem;
+        }
+        .contact-form {
+            background-color: #FFFBF5;
+            padding: 30px;
+            border-radius: 15px;
+        }
+        /* Footer css */
+        footer {
+          background: #181817;
+          color: #fff;
+          padding: 20px 0;
+          font-family: Arial, sans-serif;
+        }
+
+        .footer-container {
+          display: flex;
+          justify-content: space-between;
+          padding: 0 10%;
+        }
+
+        .footer-section {
+          width: 30%;
+        }
+
+        .footer-section h3 {
+          font-size: 18px;
+          margin-bottom: 15px;
+          color: #fff;
+          text-transform: uppercase;
+        }
+
+        .footer-section p,
+        .footer-section ul,
+        .footer-section li {
+          font-size: 14px;
+          line-height: 1.5;
+        }
+
+        .footer-section ul {
+          list-style: none;
+          padding: 0;
+
+        }
+
+        .footer-section ul li {
+          margin-bottom: 10px;
+        }
+
+        .footer-section ul li a {
+          color: #fff;
+          text-decoration: none;
+        }
+
+        .footer-section ul li a:hover {
+          text-decoration: underline;
+        }
+
+        .footer-bottom {
+          background: #181817;
+          text-align: center;
+          padding: 10px 0;
+          font-size: 12px;
+        }
+
+        .social-links li {
+          display: inline-block;
+          margin-right: 10px;
+        }
+
+        .social-links li a {
+          display: inline-block;
+          color: #fff;
+          font-size: 14px;
+        }
+
+        .social-links li a:hover {
+          color: #00aaff;
+        }
     </style>
 </head>
 <body>
@@ -193,6 +287,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#newcollection">New Collection</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contactus">Contact Us</a>
                     </li>
                     <span class="nav-item" style="padding-top:10px;">
                         <a href="/viewcart" style="color:white;padding-right:30px;"><ion-icon name="cart-outline"></ion-icon></a>
@@ -278,11 +375,75 @@
         </div>
     </section>
     </header>
+    <!-- Contact Header -->
+    <header class="contact-header" id="contactus">
+        <h1>Contact Us</h1>
+        <p>We'd love to hear from you!</p>
+
+
+    <!-- Contact Form Section -->
+    <section class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-8">
+                <div class="contact-form">
+                    <form method="POST" action="/submit_contact">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" required placeholder="Enter you name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" required placeholder="Enter you email">
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea class="form-control" id="message" name="message" rows="4" required placeholder="Enter you message"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-danger" style="background-color:#A07559;">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    </header>
 
     <!-- Footer Section -->
-    <footer class="bg-dark text-white text-center py-4">
-        <p>&copy; 2024 Your Website. All Rights Reserved.</p>
-    </footer>
+    <footer>
+  <div class="footer-container">
+    <div class="footer-section contact-us">
+      <h3>CONTACT US</h3>
+      <p>Outlet Location:<br>
+         No. 7 / 858 - M<br>
+         Ambedkar street, Panampilly nagar P.O,<br>
+         Kadavanthra, Ernakulam,<br>
+         Kerala - 682021</p>
+    </div>
+
+    <div class="footer-section quick-links">
+      <h3>QUICK LINKS</h3>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#aboutus">About US</a></li>
+        <li><a href="#newcollection">New Collections</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section get-in-touch">
+      <h3>GET IN TOUCH</h3>
+      <ul class="social-links">
+        <li style="padding-top:10px;"><span ><ion-icon name="logo-instagram"></ion-icon></span><a href="#"> &nbsp;Instagram</a></li><br>
+        <li><ion-icon name="logo-facebook"></ion-icon><a href="#"> &nbsp;Facebook</a></li><br>
+        <li><a href="#"><ion-icon name="logo-twitter"></ion-icon> &nbsp;X(Twitter)</a></li><br>
+        <li><a href="#"><ion-icon name="logo-youtube"></ion-icon> &nbsp;Youtube</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2024 AYDA. All rights reserved.</p>
+  </div>
+</footer>
+
 
 </body>
 </html>
