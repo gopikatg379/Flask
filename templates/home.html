@@ -9,10 +9,13 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <!-- Optional Custom Styles -->
     <style>
         body {
             padding-top: 56px;  /* Adjust for fixed navbar */
+            font-family: 'Poppins', sans-serif;
         }
         .hero {
             background: url('{{ url_for('static', filename='dress.jpg') }}') no-repeat center center;  /* /static/dress.jpg */
@@ -59,7 +62,7 @@
             outline: none;
         }
         #btn {
-            background-color: rgb(2, 131, 41);
+            background-color: #A07559;
             color: #fff;
             text-decoration:none;
             font-size: 17px;
@@ -70,7 +73,100 @@
             transition: background-color 0.3s ease;
         }
         #btn:hover {
-            background-color: rgb(61, 147, 87);
+            background-color: #f1c6a5;
+        }
+        .content-header{
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('{{ url_for('static', filename='background.jpg') }}') no-repeat center center;
+            background-size: cover;
+            text-align: center;
+            color: white;
+            padding: 100px 0;
+        }
+        .card {
+        transition: box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Color circles for color options */
+    .color-circle {
+        width: 15px;
+        height: 15px;
+        display: inline-block;
+        border-radius: 50%;
+        margin-right: 5px;
+        border: 1px solid #ccc;
+    }
+
+    /* Size options */
+    .size-option {
+        padding: 2px 6px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+
+        background-color: #f5f5f5;
+    }
+
+    .size-option:hover {
+        background-color: #ddd;
+    }
+
+    /* Button style */
+    #contentbtn {
+        background-color: #eed0b9;
+        color: black;
+        padding: 10px;
+        border-radius: 5px;
+        text-align: center;
+        text-decoration:none;
+
+    }
+        .about-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('{{ url_for('static', filename='modern.jpg') }}') no-repeat center center;
+            background-size: cover;
+            padding: 100px 0;
+            text-align: center;
+            color: white;
+        }
+        .about-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+        .about-header p {
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+        .about-section {
+            padding: 60px 0;
+        }
+        .about-section p {
+            font-size: 18px;
+            line-height: 1.8;
+            text-align: justify;
+            color: white;
+            margin-left:80px;
+        }
+        .icon-row {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .icon-row ion-icon {
+            font-size: 50px;
+            color: white;
+        }
+        .about-section img {
+            max-width: 100%;
+            border-radius: 15px;
+        }
+        #image1{
+            width:500px;
+
         }
     </style>
 </head>
@@ -93,14 +189,14 @@
                         <a class="nav-link active" aria-current="page" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/about">About</a>
+                        <a class="nav-link" href="#aboutus">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/add">Add</a>
+                        <a class="nav-link" href="#newcollection">New Collection</a>
                     </li>
-                    <li class="nav-item">
+                    <span class="nav-item" style="padding-top:10px;">
                         <a href="/viewcart" style="color:white;padding-right:30px;"><ion-icon name="cart-outline"></ion-icon></a>
-                    </li>
+                    </span>
                 </ul>
             </div>
         </div>
@@ -109,29 +205,79 @@
     <!-- Hero Section -->
     <header class="hero">
         <div class="container">
-            <h1>Welcome to Our Website</h1>
-            <p class="lead">Responsive design with Bootstrap</p>
-            <a href="#" id="btn">Learn More</a>
+            <h1>Unleash <span style="color:#F9A75D">Your Inner</span> Fashionista!</h1>
+            <p class="lead">Explore styles that express your unique flair.</p>
+            <a href="#aboutus" id="btn">Learn More</a>
         </div>
     </header>
+    <header class="content-header" id="newcollection">
+        <h1>New Arrivals</h1>
 
     <!-- Main Content Section -->
-    <section class="container my-5">
+    <section class="container my-5" >
     <div class="row">
         {% for x in my_dress %}
-        <div class="col-lg-3 col-md-6 mb-4">
-            <div class="card h-100"> <!-- 'h-100' ensures that all cards are the same height -->
-                <img src="{{ url_for('media_files', filename=x.image) }}" class="card-img-top" alt="{{ x.name }}" style="height: 250px;object-fit: contain;"> <!-- Fixed image height -->
-                <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">{{x.name}}</h5>
-                    <p class="card-text">₹{{x.price}}</p>
-                    <a href="/more/{{x.id}}" class="btn btn-primary mt-auto">More</a> <!-- 'mt-auto' pushes the button to the bottom -->
+        <div class="col-lg-3 col-md-6 mb-4" style="height:auto;">
+            <div class="card h-100" style="background-color:#FFFBF5; border-radius: 15px; padding: 10px;">
+                <img src="{{ url_for('media_files', filename=x.image) }}" class="card-img-top" alt="{{ x.name }}" style="height: 300px; object-fit: cover; border-radius: 10px;">
+
+                <div class="card-body">
+                    <h5 class="card-title" style="color:black;">{{ x.name }}</h5>
+                    <p class="card-text" style="color:black;">₹{{ x.price }}</p>
+
+                    <!-- Size and Color Options -->
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <div>
+                            <span style="color: black;">Colors:</span>
+                            <span class="color-circle" style="background-color: #f4c1c1;"></span>
+                            <span class="color-circle" style="background-color: #ffd369;"></span>
+                            <span class="color-circle" style="background-color: #add8e6;"></span>
+                        </div>
+                        <div>
+                            <span style="color: black;">Sizes:</span>
+                            <span class="size-option" style="color: black;">S</span>
+                            <span class="size-option" style="color: black;">M</span>
+                            <span class="size-option" style="color: black;">L</span>
+                            <span class="size-option" style="color: black;margin-bottom:10px;">XL</span>
+                        </div>
+                    </div>
+
+                    <a href="/more/{{ x.id }}" id="contentbtn" style="width: 100%;">More</a>
                 </div>
             </div>
         </div>
         {% endfor %}
     </div>
 </section>
+
+    </header>
+    <!-- About Header -->
+      <header class="about-header" id="aboutus">
+        <h1>About Us</h1>
+        <p>Learn more about our mission and values</p>
+
+
+    <!-- About Section -->
+    <section class="about-section container" >
+        <div class="icon-row">
+            <ion-icon name="shirt-outline"></ion-icon>
+            <ion-icon name="star-outline"></ion-icon>
+            <ion-icon name="heart-outline"></ion-icon>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <p>Welcome to AYDA, a place where we offer stylish outfits to match your unique personality. Our mission is to bring you the best in fashion with quality, comfort, and affordability in mind. Whether you're looking for the latest trends or classic styles, we've got something for everyone.</p>
+
+                <p>We believe fashion is for everyone, and we’re passionate about helping our customers find looks they love. Our team is committed to providing excellent service and ensuring that every shopping experience is seamless and enjoyable.</p>
+
+                <p>Thank you for being a part of our journey. We’re excited to continue growing with you!</p>
+            </div>
+            <div  id="image1">
+                <img src="{{ url_for('static', filename='dresss.jpg') }}" alt="Fashion Image" style="height:400px;">
+            </div>
+        </div>
+    </section>
+    </header>
 
     <!-- Footer Section -->
     <footer class="bg-dark text-white text-center py-4">

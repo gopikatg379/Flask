@@ -28,9 +28,9 @@ def home():
     return render_template('home.html', my_dress=obj)
 
 
-@app.route('/about')
-def about():
-    return render_template('about.html')
+# @app.route('/about')
+# def about():
+#     return render_template('about.html')
 
 
 @app.route('/add', methods=['GET', 'POST'])
@@ -74,7 +74,6 @@ def remove(cart_id):
     db.session.delete(obj)
     db.session.commit()
     return redirect('/viewcart')
-
 
 if __name__ == '__main__':
     app.run(debug=True)
