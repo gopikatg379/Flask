@@ -84,6 +84,8 @@
         }
         .card {
             transition: box-shadow 0.3s ease;
+            width:320px;
+
         }
 
         .card:hover {
@@ -263,6 +265,11 @@
           color: #00aaff;
         }
     </style>
+    <script>
+        function mymessage(){
+            alert("Thank you for you query")
+        }
+    </script>
 </head>
 <body>
 
@@ -311,8 +318,8 @@
         <h1>New Arrivals</h1>
 
     <!-- Main Content Section -->
-    <section class="container my-5" >
-    <div class="row">
+    <section class="container my-6" style="overflow-x: auto; white-space: nowrap;" >
+    <div class="row flex-nowrap" style="display: flex; gap: 20px;">
         {% for x in my_dress %}
         <div class="col-lg-3 col-md-6 mb-4" style="height:auto;">
             <div class="card h-100" style="background-color:#FFFBF5; border-radius: 15px; padding: 10px;">
@@ -337,9 +344,10 @@
                             <span class="size-option" style="color: black;">L</span>
                             <span class="size-option" style="color: black;margin-bottom:10px;">XL</span>
                         </div>
-                    </div>
 
-                    <a href="/more/{{ x.id }}" id="contentbtn" style="width: 100%;">More</a>
+                    </div><br>
+                    <div><a href="/more/{{ x.id }}" id="contentbtn" style="width: 250px;">More</a></div>
+
                 </div>
             </div>
         </div>
@@ -363,7 +371,7 @@
         </div>
         <div class="row">
             <div class="col-lg-6">
-                <p>Welcome to AYDA, a place where we offer stylish outfits to match your unique personality. Our mission is to bring you the best in fashion with quality, comfort, and affordability in mind. Whether you're looking for the latest trends or classic styles, we've got something for everyone.</p>
+                <p>Welcome to <span style="color:pink;">AY</span>DA, a place where we offer stylish outfits to match your unique personality. Our mission is to bring you the best in fashion with quality, comfort, and affordability in mind. Whether you're looking for the latest trends or classic styles, we've got something for everyone.</p>
 
                 <p>We believe fashion is for everyone, and we’re passionate about helping our customers find looks they love. Our team is committed to providing excellent service and ensuring that every shopping experience is seamless and enjoyable.</p>
 
@@ -399,7 +407,7 @@
                             <label for="message" class="form-label">Message</label>
                             <textarea class="form-control" id="message" name="message" rows="4" required placeholder="Enter you message"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-danger" style="background-color:#A07559;">Send Message</button>
+                        <button type="submit" class="btn btn-danger" style="background-color:#A07559;" onclick="mymessage()">Send Message</button>
                     </form>
                 </div>
             </div>

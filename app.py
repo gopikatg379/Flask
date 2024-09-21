@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, send_from_directory
 from flask_migrate import Migrate
 from db_init import db
-from models import DressModel, AddCart
+from models import DressModel, AddCart, Message
 
 app = Flask(__name__)  # in name location of the file
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:gop1999ika@localhost/dress'
@@ -18,7 +18,7 @@ def media_files(filename):
     return send_from_directory(app.config['MEDIA_FOLDER'], filename)
 
 
-@app.route('/',methods=['GET','POST'])
+@app.route('/', methods=['GET', 'POST'])
 def home():
     obj = DressModel.query.all()
     if request.method == "POST":
@@ -74,6 +74,19 @@ def remove(cart_id):
     db.session.delete(obj)
     db.session.commit()
     return redirect('/viewcart')
+
+
+@app.route('/submit_contact', methods=['GET', 'POST'])
+def add_message():
+    if request.method == 'POST':
+        obj = Message()
+        obj.user_name = request.form['name']
+        obj.email = request.form['email']
+        obj.message = request.form['message']
+        db.session.add(obj)
+        db.session.commit()
+        return redirect('/')
+
 
 if __name__ == '__main__':
     app.run(debug=True)

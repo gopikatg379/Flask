@@ -14,3 +14,11 @@ class AddCart(db.Model):
     __tablename__ = 'add_cart'
     cart_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     cart = db.Column(db.Integer, db.ForeignKey('dress.id'), nullable=False)
+
+
+class Message(db.Model):
+    __tablename__ = 'message_table'
+    message_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    user_name = db.Column(db.String(200))
+    email = db.Column(db.String(200))
+    message = db.Column(db.String(250))
